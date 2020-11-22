@@ -27,6 +27,11 @@ namespace Uppgift_1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+        
+        }
+
+        private void btnKlickIt_Click(object sender, RoutedEventArgs e)
+        {
             MessageBox.Show("Det här är ett meddelande.");
         }
     }
