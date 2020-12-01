@@ -1,0 +1,28 @@
+﻿<Window x:Class="Uppgift11.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Uppgift11"
+        mc:Ignorable="d"
+        Title="Smörgåsen" Height="450" Width="574">
+    <Grid>
+        <Button x:Name="btnLess" Content="" HorizontalAlignment="Left" Margin="111,154,0,0" VerticalAlignment="Top" Height="40" Width="46" Click="btnLess_Click"/>
+        <Button x:Name="btnMore" Content="" HorizontalAlignment="Left" Margin="376,154,0,0" Height="40" VerticalAlignment="Top" Click="btnMore_Click"/>
+        <ProgressBar x:Name="pgbChance" HorizontalAlignment="Left" Height="15" Margin="177,159,0,0" VerticalAlignment="Top" Width="177" Value="50" SmallChange="0" LargeChange="5" />
+        <Label x:Name="lblHowManyTries" Content="Antal försök" HorizontalAlignment="Left" Margin="111,199,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtTries" HorizontalAlignment="Left" Margin="111,230,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" LostKeyboardFocus="txtTries_LostKeyboardFocus"/>
+        <Button x:Name="btnStart" Content="Starta" HorizontalAlignment="Left" Margin="266,229,0,0" VerticalAlignment="Top" Click="btnStart_Click"/>
+        <Label x:Name="lblResults" Content="Utfall" HorizontalAlignment="Left" Margin="111,278,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblSuccess" Content="Antal åt rätt håll" HorizontalAlignment="Left" Margin="111,309,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblFails" Content="Antal åt fel håll" HorizontalAlignment="Left" Margin="111,340,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblLuckCalc" Content="Oturskalkylator" HorizontalAlignment="Left" Margin="111,100,0,0" VerticalAlignment="Top" Height="33" Width="137" FontSize="16" FontWeight="Bold"/>
+        <TextBlock x:Name="txbPercentage" HorizontalAlignment="Left" Height="21" Margin="304,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" FontWeight="Bold" FontSize="16" Text="50%"/>
+        <ProgressBar x:Name="pgbRightPercentage" HorizontalAlignment="Left" Height="18" Margin="282,335,0,0" VerticalAlignment="Top" Width="145" />
+        <Label x:Name="lblRealPercentage" Content="Aktuell Olycka" HorizontalAlignment="Left" Margin="302,287,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblMax" Content="" HorizontalAlignment="Left" Margin="432,331,0,0" VerticalAlignment="Top" Height="51" Width="40"/>
+        <Label x:Name="lblMin" Content="" HorizontalAlignment="Left" Margin="229,331,0,0" VerticalAlignment="Top" Height="51" Width="48"/>
+        <TextBlock x:Name="txbRightPercentage" HorizontalAlignment="Left" Margin="376,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

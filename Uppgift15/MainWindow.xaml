@@ -1,0 +1,20 @@
+﻿<Window x:Class="Uppgift15.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Uppgift15"
+        mc:Ignorable="d"
+        Title="Rotvälska" Height="307" Width="477">
+    <Grid>
+        <Label x:Name="lblOriginalText" Content="Grundtext" HorizontalAlignment="Left" Margin="45,87,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtOriginalText" HorizontalAlignment="Left" Margin="45,118,0,0" Text="Skriv din text här" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="99" GotKeyboardFocus="txtOriginalText_GotKeyboardFocus"/>
+        <Button x:Name="btnConvertText" Content="Konvertera &#x0a;till rotvälska" HorizontalAlignment="Left" Margin="170,0,0,0" VerticalAlignment="Center" Height="52" Width="89" Click="btnConvertText_Click" HorizontalContentAlignment="Center"/>
+        <Label x:Name="lblJibberishText" Content="Översättning" HorizontalAlignment="Left" Margin="277,87,0,0" VerticalAlignment="Top"/>
+        <!--<TextBlock x:Name="txbJibberishText" HorizontalAlignment="Left" Margin="307,118,0,0" Text="" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="99" Width="120"/>-->
+        <TextBlock x:Name="txbNrOfVowels" HorizontalAlignment="Left" Margin="45,222,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="120"/>
+        <TextBox x:Name="txbJibberishText" HorizontalAlignment="Left" Margin="277,118,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="99" BorderThickness="0"/>
+        <Button x:Name="btnPiratese" Content="Konvertera&#x0a;till rövarspråk" HorizontalAlignment="Left" Margin="170,177,0,0" VerticalAlignment="Top" Height="40" Width="89" Click="btnPiratese_Click"/>
+
+    </Grid>
+</Window>

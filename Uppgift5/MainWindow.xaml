@@ -1,0 +1,19 @@
+﻿<Window x:Class="Uppgift5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Uppgift5"
+        mc:Ignorable="d"
+        Title="Minikalkyl" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="txtSyf1" HorizontalAlignment="Left" Margin="188,80,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Height="47" FontSize="24" TextAlignment="Center" />
+        <TextBox x:Name="txtSyf2" HorizontalAlignment="Left" Margin="188,147,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Height="47" FontSize="24" TextAlignment="Center"/>
+        <TextBox x:Name="txtSum" HorizontalAlignment="Left" Margin="188,235,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Height="47" TextAlignment="Center" FontSize="24"/>
+        <Label x:Name="lblPlus" Content="+" HorizontalAlignment="Left" Margin="131,145,0,0" VerticalAlignment="Top" Height="49" Width="57" FontSize="24" BorderThickness="3,3,3,3" FontWeight="Bold"/>
+        <Label x:Name="lblSum" Content="=" HorizontalAlignment="Left" Margin="137,237,0,0" VerticalAlignment="Top" Height="47" FontSize="24" FontWeight="Bold" MouseDown="lblSum_MouseDown" BorderBrush="Black" OpacityMask="Black" BorderThickness="1,1,1,1" ClipToBounds="True" />
+        <Border x:Name="bdrBlackLine" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="11" Margin="97,0,0,0" VerticalAlignment="Center" Width="227" OpacityMask="Black" Background="Black"/>
+        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="284,237,0,0" VerticalAlignment="Top" Height="47" Width="69" Click="btnClear_Click" FontSize="24"/>
+
+    </Grid>
+</Window>
