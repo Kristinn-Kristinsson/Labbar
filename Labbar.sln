@@ -29,9 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uppgift12", "Uppgift12\Uppg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uppgift13", "Uppgift13\Uppgift13.csproj", "{4DE130EB-116B-46A6-A322-28EDCB67DF5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uppgift14", "Uppgift14\Uppgift14.csproj", "{BDE556A7-F451-4892-8D36-7BDDFAA25E4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uppgift14", "Uppgift14\Uppgift14.csproj", "{BDE556A7-F451-4892-8D36-7BDDFAA25E4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uppgift15", "Uppgift15\Uppgift15.csproj", "{98757FF1-FF81-4221-AE7B-8BC849A55AA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uppgift15", "Uppgift15\Uppgift15.csproj", "{98757FF1-FF81-4221-AE7B-8BC849A55AA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarryPotter1", "HarryPotter1\HarryPotter1.csproj", "{A69F51AC-8D90-43B5-A711-83F29A0CC382}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{98757FF1-FF81-4221-AE7B-8BC849A55AA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98757FF1-FF81-4221-AE7B-8BC849A55AA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98757FF1-FF81-4221-AE7B-8BC849A55AA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A69F51AC-8D90-43B5-A711-83F29A0CC382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A69F51AC-8D90-43B5-A711-83F29A0CC382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A69F51AC-8D90-43B5-A711-83F29A0CC382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A69F51AC-8D90-43B5-A711-83F29A0CC382}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
