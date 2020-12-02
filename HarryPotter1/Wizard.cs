@@ -7,7 +7,7 @@ namespace HarryPotter1
     {
         public class Wizard : Wand
         {
-            public string[] BloodStatus4 { get; set; }
+            public string[] BloodGroups { get; set; }
             public string Name { get; set; }
             public bool DeathEater { get; set; }
             public bool DumbledoresArmy { get; set; }
@@ -50,8 +50,8 @@ namespace HarryPotter1
             public Wizard(string name, int bloodstatus, bool deathEater, bool dumbledoresArmy, object[] wand, Wand theWand)
             {
                 Name = name;
-                BloodStatus4 = new string[4] { "renblod", "halvblod", "mugglarfödd", "okänt" };
-                string blood = BloodStatus4[bloodstatus];
+                BloodGroups = new string[4] { "renblod", "halvblod", "mugglarfödd", "okänt" };
+                string blood = BloodGroups[bloodstatus];
                 BloodStatus = blood;
                 DeathEater = deathEater;
                 DumbledoresArmy = dumbledoresArmy;
@@ -71,6 +71,10 @@ namespace HarryPotter1
 
             }
 
+            public Wizard()
+            {
+
+            }
         }
 
     }
