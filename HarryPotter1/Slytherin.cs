@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Collections.Generic;
 namespace HarryPotter1
 {
     public partial class MainWindow
@@ -10,17 +11,17 @@ namespace HarryPotter1
             {
                 this.HouseGhost = "Blodige Baronen";
                 this.Mascot = "Orm";
-                this.Members = 0;
+                Members = (Members == null) ? new List<string>() : Members;
                 this.Password = "Slinka igenom";
             }
 
-            public string ChangePassword(string pass)
-            {
+            public override string ChangePassword(string pass)
+            {   
                 GeneralMethods gm = new GeneralMethods();
                 string shortTimePass;
                 if (pass == Password)
                 {
-                    shortTimePass = "Not gonna do";
+                    shortTimePass = " ";
                     gm.GettingArray(shortTimePass);
                     if (gm.CheckLetter(shortTimePass[0]) == false && shortTimePass.Length > 7
                         && gm.CheckLetter(shortTimePass[shortTimePass.Length - 1]) == false)
@@ -32,13 +33,13 @@ namespace HarryPotter1
                     else
                     {
                         return Password;
-                    }
+                   }
 
                 }
                 return Password;
 
 
-            }
+             }
         }
     }
 }
