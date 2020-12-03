@@ -2,8 +2,7 @@
 
 namespace HarryPotter1
 {
-    public partial class MainWindow
-    {
+   
         public class Wand
         {
             //private List<string> WoodL { get; set; }
@@ -18,30 +17,7 @@ namespace HarryPotter1
                 Wood = wood;
                 Core = core;
             }
-            public Wand()
-            {
 
-            }
-
-            /*public void WandAlreadyExists()
-            {
-                bool w = false, c = false;
-                foreach (string wo in WoodL)
-                    if (wo == Wood)
-                    {
-                        w = true;
-                    }
-                foreach (string co in CoreL)
-                    if (co == Core)
-                    {
-                        c = true;
-                    }
-                if (w == true)
-                    CoreL.Add(Core);
-                if (c == true)
-                    WoodL.Add(Wood);
-
-            }*/
         }
-    }
+    
 }

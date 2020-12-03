@@ -1,44 +1,31 @@
-﻿using System;
-using System.Windows;
-namespace HarryPotter1
+﻿namespace HarryPotter1
 {
-    public partial class MainWindow
+
+    public class Slytherin : House
     {
-        public class Slytherin : House
+        public Slytherin()
         {
-            public Slytherin()
+            this.HouseGhost = "Blodige Baronen";
+            this.Mascot = "Orm";
+            this.Password = "Slinka igenom";
+        }
+
+        public override bool HasCorrectPasswordFormat(string shortTimePass)
+        {
+            GeneralMethods gm = new GeneralMethods();
+            gm.GettingArray(shortTimePass);
+            if (gm.CheckLetter(shortTimePass[0]) == false && shortTimePass.Length > 7
+                   && gm.CheckLetter(shortTimePass[shortTimePass.Length - 1]) == false)
             {
-                this.HouseGhost = "Blodige Baronen";
-                this.Mascot = "Orm";
-                this.Members = 0;
-                this.Password = "Slinka igenom";
+                Password = "";
+                Password = shortTimePass;
+                return true;
             }
-
-            public string ChangePassword(string pass)
+            else
             {
-                GeneralMethods gm = new GeneralMethods();
-                string shortTimePass;
-                if (pass == Password)
-                {
-                    shortTimePass = "Not gonna do";
-                    gm.GettingArray(shortTimePass);
-                    if (gm.CheckLetter(shortTimePass[0]) == false && shortTimePass.Length > 7
-                        && gm.CheckLetter(shortTimePass[shortTimePass.Length - 1]) == false)
-                    {
-                        Password = "";
-                        Password = shortTimePass;
-                        return Password;
-                    }
-                    else
-                    {
-                        return Password;
-                    }
-
-                }
-                return Password;
-
-
+                return false;
             }
         }
+            
     }
 }
