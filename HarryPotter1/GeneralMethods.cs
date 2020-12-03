@@ -2,8 +2,7 @@
 
 namespace HarryPotter1
 {
-    public partial class MainWindow
-    {
+
         public class GeneralMethods
         {
             public static readonly char[] Vowels = { 'a', 'A', 'e', 'E', 'y', 'Y', 'u', 'U', 'i', 'I', 'o', 'O', 'ö', 'Ö', 'ä', 'Ä', 'å', 'Å' };
@@ -30,6 +29,6 @@ namespace HarryPotter1
 
             }
         }
-    }
+
 }
 

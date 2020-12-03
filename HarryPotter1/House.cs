@@ -1,63 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace HarryPotter1
 {
-    public partial class MainWindow
-    {
-        public abstract class House : Wizard
+        public abstract class House
         {
             public string HouseGhost { get; set; }
             public string Mascot { get; set; }
-            private string _Password;
+            public string Password { get; set; }
             
-            public List<string> Members { get; set; }
+            public List<Wizard> Members { get; set; }
             
             public int TotalMembers { get; set; }
             
 
 
-            public House()
+        public House()
+        {
+            Members = new List<Wizard>();
+        }
+
+        public bool SetPassword(string pass, string shortTimePass)
+        {
+            if (pass == Password && HasCorrectPasswordFormat(shortTimePass) == true)
             {
+                return true;
 
             }
+            else
+                return false;
+        }
 
-            public string Password
+        public virtual bool HasCorrectPasswordFormat(string shortTimePass)
+
+        {
+            GeneralMethods gm = new GeneralMethods();
+            gm.GettingArray(shortTimePass);
+            if (gm.CheckLetter(shortTimePass[0]) == true && shortTimePass.Length > 4
+                && gm.CheckLetter(shortTimePass[shortTimePass.Length - 1]) == false)
             {
-                get
-                { return _Password; }
-                set
-                { _Password = value; }
+                Password = "";
+                Password = shortTimePass;
+                return true;
             }
-
-            public virtual string ChangePassword(string pass)
+            else
             {
-                GeneralMethods gm = new GeneralMethods();
-                string shortTimePass;
-                if (pass == Password)
-                {
-                    shortTimePass = " ";
-                    gm.GettingArray(shortTimePass);
-                    if (gm.CheckLetter(shortTimePass[0]) == true && shortTimePass.Length > 4
-                        && gm.CheckLetter(shortTimePass[shortTimePass.Length - 1]) == false)
-                    {
-                        Password = "";
-                        Password = shortTimePass;
-                        return Password;
-                    }
-                    else
-                    {
-                        return Password;
-                    }
-
-                }
-                return Password;
-
+                return false;
             }
-            public void AddingMembers(Wizard w)
-            {
-                this.Members.Add(w.Name);
-            }
+        }
+
+        
+        public void AddingMembers(Wizard w)
+        {
+            Members.Add(w);
         }
     }
 }

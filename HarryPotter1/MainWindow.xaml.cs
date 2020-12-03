@@ -22,7 +22,5 @@ namespace HarryPotter1
         {
             InitializeComponent();
         }
-
-       
     }
 }
