@@ -3,13 +3,14 @@
 
     public class Wizard
     {
-        private string[] BloodGroups { get; set; }
+        public string[] BloodGroups { get; set; }
         public string Name { get; set; }
         public bool DeathEater { get; set; }
         public bool DumbledoresArmy { get; set; }
         public string BloodStatus { get; set; }
         Wand Wand { get; set; }
 
+        GeneralMethods gm = new GeneralMethods();
 
 
         public string ArmyNow()
@@ -44,22 +45,19 @@
 
         }
 
-        public Wizard(string name, int bloodstatus, bool deathEater, bool dumbledoresArmy, Wand personalWand)
+        public Wizard(string name)
         {
-            Name = name;
-            BloodGroups = new string[4] { "renblod", "halvblod", "mugglarfödd", "okänt" };
-            string blood = BloodGroups[bloodstatus];
-            BloodStatus = blood;
-            DeathEater = deathEater;
-            DumbledoresArmy = dumbledoresArmy;
-            Wand = personalWand;
-
-
+            Name = name;   
+            BloodGroups = new string[4] {  "Halvblod", "Mugglarfödd", "Fullblod", "Okänt" };
         }
 
         public Wizard()
         {
 
+        }
+        public override string ToString()
+        {
+            return this.GetType().Name;
         }
     }
 }

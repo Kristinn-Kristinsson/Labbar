@@ -9,6 +9,7 @@
             this.Mascot = "Orm";
             this.Password = "Slinka igenom";
         }
+        
 
         public override bool HasCorrectPasswordFormat(string shortTimePass)
         {
@@ -26,6 +27,10 @@
                 return false;
             }
         }
-            
+        public override string ToString()
+        {
+            return this.GetType().Name;
+        }
+
     }
 }

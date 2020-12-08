@@ -10,7 +10,7 @@ namespace HarryPotter1
             
             public List<Wizard> Members { get; set; }
             
-            public int TotalMembers { get; set; }
+            
             
 
 
@@ -24,7 +24,6 @@ namespace HarryPotter1
             if (pass == Password && HasCorrectPasswordFormat(shortTimePass) == true)
             {
                 return true;
-
             }
             else
                 return false;
