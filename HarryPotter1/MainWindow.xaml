@@ -5,6 +5,94 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HarryPotter1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid/>
+        Title="Harry Potter and the Houses of the Holy" Height="933" Width="800">
+    <Grid Background="White" Margin="35">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="25" />
+        </Grid.ColumnDefinitions>
+        <TextBlock FontSize="30" HorizontalAlignment="Left" Text="Harry Potter" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Algerian" Grid.Row="1" Grid.Column="1"/>
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="5" HorizontalAlignment="Left">
+            <TextBlock FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Open Sans" Height="38" Width="131" Text="Hufflepuff"/>
+            <ListBox x:Name="lstHufflepuff" xmlns:sys="clr-namespace:System;assembly=mscorlib" Width="160" Height="200" MouseDoubleClick="lstHufflepuff_MouseDoubleClick"/>
+
+
+            <Label Content="Maskot"/>
+            <Label x:Name="lblHufflepuffMascot"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2" Margin="5">
+            <TextBlock FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Open Sans" Height="38" Width="131" Text="Ravenclaw"/>
+            <ListBox x:Name="lstRavenclaw" Width="160"  Height="200" MouseDoubleClick="lstRavenclaw_MouseDoubleClick"/>
+            <Label Content="Maskot" />
+            <Label x:Name="lblRavenclawMascot"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="3" Margin="5">
+            <TextBlock FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Open Sans" Height="38" Width="131" Text="Gryffindor"/>
+            <ListBox x:Name="lstGryffindor" Width="160"  Height="200" MouseDoubleClick="lstGryffindor_MouseDoubleClick" />
+            <Label Content="Maskot" />
+            <Label x:Name="lblGryffindorMascot"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="4" Margin="5">
+            <TextBlock FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Open Sans" Height="38" Width="131" Text="Slytherin"/>
+            <ListBox x:Name="lstSlytherin" Width="160"  Height="200" MouseDoubleClick="lstSlytherin_MouseDoubleClick" />
+            <Label Content="Maskot" />
+            <Label x:Name="lblSlytherinMascot"/>
+        </StackPanel>
+
+        <GroupBox Header="Information" VerticalAlignment="Top" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,40,20,10">
+            <StackPanel>
+                <Label Margin="8,0,0,0" Content="Namn"/>
+                <TextBox Margin="10,0,0,0" x:Name="txtName"/>
+                <GroupBox Margin="5,20,0,25" Header="Trollstav" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <StackPanel>
+                        <Label Content="Träslag"/>
+                        <TextBox x:Name="txtWandWood"/>
+                        <Label Content="Kärna"/>
+                        <TextBox x:Name="txtWandCore"/>
+                        <Label Content="Längd"/>
+                        <TextBox x:Name="txtWandLength"/>
+                    </StackPanel>
+                </GroupBox>
+                <CheckBox Margin="10,5,0,0"  x:Name="chkDeatheater" Content="Dödsätare" />
+                <CheckBox Margin="10,0,0,0"  x:Name="chkArmy" Content="Dumbledores army" />
+                <Button Margin="10" Width="124" HorizontalAlignment="Left" x:Name="btnWand" Content="köp trollstav" />
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Bli medlem" Grid.Row="3" Grid.Column="3" Width="160" Margin="0,40,20,10">
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap" Margin="10">Låt sorteringshatten avgöra vilket elevhem som får nya medlemmar</TextBlock>
+                <Label Content="Trollkarlens namn" Margin="6, 5,10,0"/>
+                <TextBox x:Name="txtNewWizardName" Margin="10, 0,10,5"/>
+                <Button Margin="20,15,20,20" x:Name="btnSortingHat" Content="Skapa och sortera &#xD;&#xA;trollkarl" Click="btnSortingHat_Click" />
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Byt lösenord"  Grid.Row="3" Grid.Column="4"  Margin="0,40,20,10">
+            <StackPanel Margin="10">
+                <ComboBox x:Name="cboHouses" />
+
+                <Label Content="Nuvarande lösenord"/>
+                <TextBox x:Name="txtOldPassword" />
+                <Label Content="Nytt lösenord"/>
+                <TextBox x:Name="txtNewPassword" />
+                <Button Margin="10,5,10,0" x:Name="btnChangePassword" Content="Byt lösenord" Click="btnChangePassword_Click" />
+            </StackPanel>
+        </GroupBox>
+        <Button x:Name="btnSaveFile" Content="Spara fil" Grid.Column="1" Grid.Row="5" Click="btnSaveFile_Click" />
+        <Button x:Name="btnLoadFile" Content="Ladda fil" Grid.Column="3" Margin="5,0,5,0" Grid.Row="4" Click="btnLoadFile_Click" />
+    </Grid>
 </Window>

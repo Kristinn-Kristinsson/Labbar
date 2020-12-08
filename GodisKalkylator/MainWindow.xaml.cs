@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace GodisKalkylator
 {
     /// <summary>
@@ -20,37 +21,142 @@ namespace GodisKalkylator
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string filename = "Populate.json";
         public MainWindow()
         {
             InitializeComponent();
         }
-        public class Person
+        public int simpleCheck = 0;
+        public int x = 0;
+        
+        public class LBPeople
         {
-            public int Age { get; set; }
-            public int Candies { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public object ThisPerson {;
+            public string Info { get; set; }
+            public int HowManyCandy { get; set; }
+        }
+        CandyCalculator candyCalculator = new CandyCalculator();
+        
 
-            
-
-            
-
-            public Person(int age, int candies, string firstName, string lastName)
+        private void btnAddPerson_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtAge.Text == "")
             {
-                object[] person = new object[4];
-                Age = age;
-                Candies = candies;
-                FirstName = firstName;
-                LastName = lastName;
-                person.Append(age); person.Append(candies); person.Append(firstName); person.Append(lastName);
-                ThisPerson = person;
+                MessageBox.Show("Hur gammal är du egentligen då?");
+                return;
+            }
+            else if (txtFirstName.Text == "")
+            {
+                MessageBox.Show("Vill inte ge upp ditt namn?");
+                return;
             }
 
-            public string ToString()
+            else if (txtLastName.Text == "")
             {
-                string aboutPerson;
-                aboutPerson = $"{}"
+                MessageBox.Show("Men efternamn?");
+                return;
+            }
+            var p = new Person(int.Parse(txtAge.Text), txtFirstName.Text, txtLastName.Text);
+            p.PersonToString(p);
+            candyCalculator.ThePeople.Add(p);
+            lbPersons.Items.Add(p);
+
+            txtAge.Clear();
+            txtFirstName.Clear();
+            txtLastName.Clear();
+        }
+        
+        private void txtAge_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (int.TryParse(txtAge.Text, out simpleCheck))
+            {
+                txtAge.Text = Convert.ToString(txtAge.Text);
+            }
+            else
+            {
+                MessageBox.Show("Fel. Inte syffra.");
+                txtAge.Clear();
+                txtAge.Focus();
+            }
+        }
+
+        private void txtCandies_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (int.TryParse(txtCandies.Text, out simpleCheck))
+            {
+                txtCandies.Text = Convert.ToString(txtCandies.Text);
+            }
+            else
+            {
+                MessageBox.Show("Fel. Inte syffra.");
+                txtCandies.Clear();
+                txtCandies.Focus();
+            }
+        }
+
+        private void btnDealCandy_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtCandies.Text == "")
+            {
+                MessageBox.Show("Du måste ha något godis till att dela!");
+                return;
+            }
+            candyCalculator.CalculateCandy(int.Parse(txtCandies.Text), candyCalculator.ThePeople.Count());
+
+            lbPersons.Items.Clear();
+            for (int i = 0; i < candyCalculator.ThePeople.Count(); i++)
+            {
+                lbPersons.Items.Add(candyCalculator.ThePeople[i]);
+            }
+            txtCandies.Clear();
+            
+        }
+
+        
+
+        private void rbFirstName_Checked(object sender, RoutedEventArgs e)
+        {
+            candyCalculator.CalculateByFirstName();
+            lbPersons.Items.Clear();
+            for (int i = 0; i < candyCalculator.ThePeople.Count(); i++)
+            {
+                lbPersons.Items.Add(candyCalculator.ThePeople[i]);
+            }
+        }
+
+        private void rbLastName_Checked(object sender, RoutedEventArgs e)
+        {
+            candyCalculator.CalculateByLastName();
+            lbPersons.Items.Clear();
+            for (int i = 0; i < candyCalculator.ThePeople.Count(); i++)
+            {
+                lbPersons.Items.Add(candyCalculator.ThePeople[i]);
+            }
+
+        }
+
+        private void rbAge_Checked(object sender, RoutedEventArgs e)
+        {
+            candyCalculator.CalculateByAge();
+            lbPersons.Items.Clear();
+            for (int i = 0; i < candyCalculator.ThePeople.Count(); i++)
+            {
+                lbPersons.Items.Add(candyCalculator.ThePeople[i]);
+            }
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            FileHandler.Save(candyCalculator.ThePeople, filename);
+        }
+
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            List<Person> Populate = FileHandler.Open<List<Person>>(filename);
+            //lbPersons.Items.Refresh();
+            lbPersons.Items.Clear();
+            for (int i = 0; i < Populate.Count(); i++)
+            {
+                lbPersons.Items.Add(Populate[i]);
             }
         }
     }

@@ -13,5 +13,9 @@
         {
             AddingMembers(wiz);
         }
+        public override string ToString()
+        {
+            return this.GetType().Name;
+        }
     }
 }
