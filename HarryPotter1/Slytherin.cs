@@ -13,10 +13,10 @@
 
         public override bool HasCorrectPasswordFormat(string shortTimePass)
         {
-            GeneralMethods gm = new GeneralMethods();
-            gm.GettingArray(shortTimePass);
-            if (gm.CheckLetter(shortTimePass[0]) == false && shortTimePass.Length > 7
-                   && gm.CheckLetter(shortTimePass[shortTimePass.Length - 1]) == false)
+            
+            GettingArray(shortTimePass);
+            if (CheckLetter(shortTimePass[0]) == false && shortTimePass.Length > 7
+                   && CheckLetter(shortTimePass[shortTimePass.Length - 1]) == false)
             {
                 Password = "";
                 Password = shortTimePass;
