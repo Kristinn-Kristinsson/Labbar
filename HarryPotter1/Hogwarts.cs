@@ -18,31 +18,31 @@ namespace HarryPotter1
             this.Ravenclaw = new Ravenclaw();
             this.Slytherin = new Slytherin();
         }
-        public void SortingHat(Wizard wiz)
+        public House SortingHat(Wizard wiz)
         {
             if (TotalWizards % 4 == 0)
             {
                 Hufflepuff.AddingMembers(wiz);
                 TotalWizards++;
-                return;
+                return Hufflepuff;
             }
             else if (TotalWizards % 4 == 1)
             {
                 Ravenclaw.AddingMembers(wiz);
                 TotalWizards++;
-                return;
+                return Ravenclaw;
             }
             else if (TotalWizards % 4 == 2)
             {
                 Gryffindor.AddingMembers(wiz);
                 TotalWizards++;
-                return;
+                return Gryffindor;
             }
             else
             {
                 Slytherin.AddingMembers(wiz);
                 TotalWizards++;
-                return;
+                return Slytherin;
             }
 
         }
@@ -52,7 +52,7 @@ namespace HarryPotter1
             return this.GetType().Name;
         }
 
-        public static ComboBox cbHouses = new ComboBox();
+        
 
         
 

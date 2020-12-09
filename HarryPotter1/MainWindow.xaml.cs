@@ -24,23 +24,22 @@ namespace HarryPotter1
         //    return this.GetType().Name;
         //}
         public MainWindow()
-        {
-            
+        {           
             InitializeComponent();
 
-            
             cboHouses.Items.Add(hogwarts.Hufflepuff);
             cboHouses.Items.Add(hogwarts.Ravenclaw);
             cboHouses.Items.Add(hogwarts.Gryffindor);
             cboHouses.Items.Add(hogwarts.Slytherin);
-            
-
+            lblHufflepuffMascot.Content = hogwarts.Hufflepuff.Mascot;
+            lblRavenclawMascot.Content = hogwarts.Ravenclaw.Mascot;
+            lblGryffindorMascot.Content = hogwarts.Gryffindor.Mascot;
+            lblSlytherinMascot.Content = hogwarts.Slytherin.Mascot;
         }
         public string filename = "YoureAWizard.json";
 
-
+        Wizard wiz;
         Hogwarts hogwarts = new Hogwarts();
-        GeneralMethods gm = new GeneralMethods();
         
         private void btnChangePassword_Click(object sender, RoutedEventArgs e)
         {
@@ -84,86 +83,42 @@ namespace HarryPotter1
 
         private void btnSortingHat_Click(object sender, RoutedEventArgs e)
         {
+            if (txtNewWizardName.Text == "")
+            {
+                MessageBox.Show("Trollkarl utan namn. Konstigt. Ge honom något namn!");
+                return;
+            }
+
             chkArmy.IsChecked = false;
             chkDeatheater.IsChecked = false;
-            Wizard wiz = new Wizard(txtNewWizardName.Text);
-            gm.WizardBlood(wiz);
-            gm.DeathEater(wiz);
-            gm.DumbledoresArmy(wiz);
-            hogwarts.SortingHat(wiz);
+            wiz = new Wizard(txtNewWizardName.Text);
+            House house = hogwarts.SortingHat(wiz);
             txtNewWizardName.Clear();
             txtName.Text = wiz.Name;
-            if (wiz.DeathEater == true)
-                chkDeatheater.IsChecked = true;
-            if (wiz.DumbledoresArmy == true)
-                chkArmy.IsChecked = true;
-            //int wizardJoin;
-            if (hogwarts.Hufflepuff.Members.Contains(wiz) == true)
-            {
-                //wizardJoin = hogwarts.Hufflepuff.Members.Count() -1;
-                lstHufflepuff.Items.Add(wiz.Name);
-                MessageBox.Show($"Välkommen {wiz.Name}! Du är nu del av Hufflepuff, nr {hogwarts.Hufflepuff.Members.Count}" +
+            chkDeatheater.IsChecked = wiz.DeathEater;
+            chkArmy.IsChecked = wiz.DumbledoresArmy;
+            int grf_TotalMembers = hogwarts.Gryffindor.Members.Count();
+            int hfp_TotalMembers = hogwarts.Hufflepuff.Members.Count();
+            int rvc_TotalMembers = hogwarts.Ravenclaw.Members.Count();
+            int slt_TotalMembers = hogwarts.Slytherin.Members.Count();
+
+
+            lstGryffindor.ItemsSource = hogwarts.Gryffindor.Members; //alla raden nedan for.
+            lstHufflepuff.ItemsSource = hogwarts.Hufflepuff.Members;
+            lstRavenclaw.ItemsSource = hogwarts.Ravenclaw.Members;
+            lstSlytherin.ItemsSource = hogwarts.Slytherin.Members; 
+                MessageBox.Show($"Välkommen {wiz.Name}! Du är nu del av {house}, nr {house.Members.Count}" +
                     $" i det Huset och nr \n{hogwarts.TotalWizards} i hela Hogwarts! Lösenordet till hemmet är " +
-                    $"{hogwarts.Hufflepuff.Password}\n (skriv det när, du får inte se det igen!) och " +
-                    $"{hogwarts.Hufflepuff.HouseGhost}\n ser fram emot att träffa dig.");
-                
-                lblHufflepuffMascot.Content = hogwarts.Hufflepuff.Mascot;
-            }
-            else if (hogwarts.Ravenclaw.Members.Contains(wiz) == true)
-            {
-                //wizardJoin = hogwarts.Ravenclaw.Members.Count() -1;
-                lstRavenclaw.Items.Add(wiz.Name);
-                MessageBox.Show($"Välkommen {wiz.Name}! Du är nu del av Ravenclaw, nr {hogwarts.Ravenclaw.Members.Count}" +
-                    $" i det Huset och nr \n{hogwarts.TotalWizards} i hela Hogwarts! Lösenordet till hemmet är " +
-                    $"{hogwarts.Ravenclaw.Password}\n (skriv det när, du får inte se det igen!) och " +
-                    $"{hogwarts.Ravenclaw.HouseGhost}\n ser fram emot att träffa dig.");
-                lblRavenclawMascot.Content = hogwarts.Ravenclaw.Mascot;
-            }
-            else if (hogwarts.Gryffindor.Members.Contains(wiz) == true)
-            {
-                //hogwarts.Gryffindor.Members[wizardJoin].Name
-                //wizardJoin = hogwarts.Gryffindor.Members.Count() -1;
-                lstGryffindor.Items.Add(wiz.Name);
-                MessageBox.Show($"Välkommen {wiz.Name}! Du är nu del av Gryffindor, nr {hogwarts.Gryffindor.Members.Count}" +
-                    $" i det Huset och nr \n{hogwarts.TotalWizards} i hela Hogwarts! Lösenordet till hemmet är " +
-                    $"{hogwarts.Gryffindor.Password}\n (skriv det när, du får inte se det igen!) och " +
-                    $"{hogwarts.Gryffindor.HouseGhost}\n ser fram emot att träffa dig.");
-                lblGryffindorMascot.Content = hogwarts.Gryffindor.Mascot;
-            }
-            else if (hogwarts.Slytherin.Members.Contains(wiz) == true)
-            {
-                //wizardJoin = hogwarts.Slytherin.Members.Count() -1;
-                lstSlytherin.Items.Add(wiz.Name);
-                MessageBox.Show($"Välkommen {wiz.Name}! Du är nu del av Slytherin, nr {hogwarts.Slytherin.Members.Count}" +
-                    $" i det Huset och nr \n{hogwarts.TotalWizards} i hela Hogwarts! Lösenordet till hemmet är " +
-                    $"{hogwarts.Slytherin.Password}\n (skriv det när, du får inte se det igen!) och " +
-                    $"{hogwarts.Slytherin.HouseGhost}\n ser fram emot att träffa dig.");
-                lblSlytherinMascot.Content = hogwarts.Slytherin.Mascot;
-            }
-            else
-                MessageBox.Show("Du, jag kan inte ställa dig i något elevhem! \n Konstigt.");
+                    $"{house.Password}\n (skriv det när, du får inte se det igen!) och " +
+                    $"{house.HouseGhost}\n ser fram emot att träffa dig.");
         }
 
-        private void lstHufflepuff_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void lstHufflepuff_MouseDoubleClick(object sender, MouseButtonEventArgs e) // tilldela 
         {
-            chkArmy.IsChecked = false;
-            chkDeatheater.IsChecked = false;
-            if (lstHufflepuff.SelectedItem != null)
-            {
-                txtName.Text =  lstHufflepuff.SelectedItem.ToString();
-                for (int i = 0; i < hogwarts.Hufflepuff.Members.Count(); i++)
-                    if (hogwarts.Hufflepuff.Members[i].Name == txtName.Text)
-                        if (hogwarts.Hufflepuff.Members[i].DeathEater == true)
-                        {
-                            chkDeatheater.IsChecked = true;
-                            if (hogwarts.Hufflepuff.Members[i].DumbledoresArmy == true)
-                            {
-                                chkArmy.IsChecked = true;
-                            }
-                            
-                        }
-                        
-            }
+            wiz = (Wizard)cboHouses.SelectedItem;
+            chkArmy.IsChecked = wiz.DumbledoresArmy;
+            chkDeatheater.IsChecked = wiz.DeathEater;
+            txtName.Text = wiz.Name;
         }
 
         private void lstRavenclaw_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -234,16 +189,11 @@ namespace HarryPotter1
 
         private void btnLoadFile_Click(object sender, RoutedEventArgs e)
         {
-            Hogwarts YoureAWizard = FileHandler.Open<Hogwarts>(filename);
-            hogwarts = YoureAWizard;
-            for(int i = 0; i < YoureAWizard.Gryffindor.Members.Count(); i++)
-                lstGryffindor.Items.Add(YoureAWizard.Gryffindor.Members[i].Name);
-            for (int i = 0; i < YoureAWizard.Hufflepuff.Members.Count(); i++)
-                lstHufflepuff.Items.Add(YoureAWizard.Hufflepuff.Members[i].Name);
-            for (int i = 0; i < YoureAWizard.Ravenclaw.Members.Count(); i++)
-                lstRavenclaw.Items.Add(YoureAWizard.Ravenclaw.Members[i].Name);
-            for (int i = 0; i < YoureAWizard.Slytherin.Members.Count(); i++)
-                lstSlytherin.Items.Add(YoureAWizard.Slytherin.Members[i].Name);
+            Hogwarts YoureAWizard = FileHandler.Open<Hogwarts>(filename);                  
+            lstGryffindor.ItemsSource = (YoureAWizard.Gryffindor.Members);
+            lstHufflepuff.ItemsSource = (YoureAWizard.Hufflepuff.Members);
+            lstRavenclaw.ItemsSource = (YoureAWizard.Ravenclaw.Members);
+            lstSlytherin.ItemsSource = (YoureAWizard.Slytherin.Members);
         }
     }
     
